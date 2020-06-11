@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  - name: To create a user.
+    user: name=myuser12
+    delegate_to: 172.31.42.204 

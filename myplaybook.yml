@@ -1,0 +1,27 @@
+---
+- hosts: all
+  #serial: 1
+  strategy: free
+  tasks:
+  - name: To install the servers.
+    user: 
+      name: myuser2
+      groups: root
+      state: present 
+    #run_once: true
+  
+  - name: To test the ansible version.
+    file:
+      path: /var/tmp/file123
+      state: touch 
+    #delegate_to: localhost 
+    #run_once: true
+  
+  - name: To run a command locally on the server.
+    #local_action: command "hostname" 
+    command: hostname
+    #delegate_to: localhost 
+    register: output
+
+  - name: to display a message.
+    debug: var=output.stdout
